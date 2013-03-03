@@ -1,6 +1,10 @@
 Storybook::Application.routes.draw do
   get "home/index"
 
+  devise_for :users
+
+  get "home/index"
+
   resources :statuses
 root :to => "home#index"
 
