@@ -1,6 +1,8 @@
 Storybook::Application.routes.draw do
-  resources :statuses
+  get "home/index"
 
+  resources :statuses
+root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
