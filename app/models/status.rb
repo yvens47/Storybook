@@ -1,6 +1,7 @@
 class Status < ActiveRecord::Base
-  attr_accessible :content, :name
+  attr_accessible :content
   
-  validates :content, :presence =>true, :length =>{:minimum =>10}
-  validates :name, :presence =>true
+  validates :content, :presence =>true, 
+                    :length =>{:minimum =>10}
+  
 end
