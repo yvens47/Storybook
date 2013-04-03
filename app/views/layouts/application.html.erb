@@ -13,18 +13,44 @@
           
               					<a class="brand" href="#">Title</a>
    							 <ul class="nav">
-    							<li class="active"><a href="#">Home</a></li>
+    							<li class="active"><%= link_to "GEtResult",statuses_path%></li>
     								<li><a href="#">Link</a></li>
     								<li><a href="#">Link</a></li>
    							 </ul>
+   							 
+   			    <div class="btn-group pull-right" >
+				    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				    Member
+				    <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				    <!-- dropdown menu links -->
+				   <% if user_signed_in? %>        
+       <li> <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%></li>
+    <% else %>
+        <li><%= link_to 'Register', new_user_registration_path %></li>
+        <li><%= link_to 'Sign in', new_user_session_path %></li>
+    <% end %>
+				    </ul>
+   				 </div>
    						
         		</div>
       </div>
    </div>
 	<div class="container">
-		
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+		<% if flash[:notice] %>
+        <div class="alert alert-success">
+        	<a class="close" data-dismiss="alert" href="#">&times;</a>
+        	<%= flash[:notice] %>
+        	</div>
+        <% end %>
+        
+        <% if flash[:alert] %>
+        <div class="alert alert-error">
+        	<a class="close" data-dismiss="alert" href="#">&times;</a>
+        	<%= flash[:alert] %>
+        	</div>
+        <% end %>
      <%= yield %>
 	</div>
 </body>
